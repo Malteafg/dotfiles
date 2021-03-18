@@ -99,17 +99,18 @@ alias exsys='cd ~/Uni/semester4/exsys'
 alias uni='cd ~/Uni'
 alias dwn='cd ~/Downloads'
 
-alias dot='cd ~/.dotfiles'
 alias rcompton='killall compton ; compton --config $HOME/.config/compton/compton.conf &'
 
-alias vimrc='vim ~/.dotfiles/vimrc'
-alias bashrc='vim ~/.dotfiles/bashrc'
+alias vimrc='vim ~/.vimrc'
+alias bashrc='vim ~/.bashrc'
 alias qtileconf='vim ~/.config/qtile/config.py'
 alias comptonconf='vim ~/.config/compton/compton.conf'
 
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
 alias ciscostate='/opt/cisco/anyconnect/bin/vpn state'
+
+alias config='/usr/bin/git --git-dir=/home/malte/.dotfiles/ --work-tree=/home/malte'
 
 ciscovpn() { /opt/cisco/anyconnect/bin/vpn "$@"; }
 	
@@ -137,4 +138,3 @@ if ! shopt -oq posix; then
   fi
 fi
 source "$HOME/.cargo/env"
-alias config='/usr/bin/git --git-dir=/home/malte/.dotfiles/ --work-tree=/home/malte'
