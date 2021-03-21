@@ -11,3 +11,16 @@ vnoremap ; l
 vnoremap h ;
 set tabstop=4
 set shiftwidth=4
+
+"vim-plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://tpope.io/vim/surround.git'
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+
