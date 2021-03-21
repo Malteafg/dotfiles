@@ -106,6 +106,7 @@ alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
 alias qtileconf='vim ~/.config/qtile/config.py'
 alias comptonconf='vim ~/.config/compton/compton.conf'
+alias alacrittyconf='vim ~/.config/alacritty/alacritty.yml'
 
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
