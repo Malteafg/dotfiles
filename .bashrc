@@ -91,7 +91,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias gfkl='sudo -E vim /usr/share/X11/xkb/symbols/us'
+alias gfkl='vim /usr/share/X11/xkb/symbols/gfkl'
 alias ..='cd ..'
 alias ~='cd ~'
 alias compark='cd ~/Uni/semester4/compark'
