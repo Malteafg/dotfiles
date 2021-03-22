@@ -43,24 +43,24 @@ xkb_symbols "basic" {
 
 
 
-    key<AD01> { [   q,          Q,		NoSymbol,	NoSymbol,	XF86AudioPlay,	XF86AudioPause  ],
+    key<AD01> { [   q,          Q,		NoSymbol,	dead_tilde,	XF86AudioPlay,	XF86AudioPause  ],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			Redirect(key=<I208>,clearmods=all), Redirect(key=<I209>,clearmods=all)]};
-    key<AD02> { [   w,          W,		NoSymbol,	NoSymbol,	XF86AudioPrev,	XF86AudioRewind	],
+    key<AD02> { [   w,          W,		NoSymbol,	dead_grave,	XF86AudioPrev,	XF86AudioRewind	],
 		actions[Group1]=[NoAction(),NoAction(),NoAction(),NoAction(),
             Redirect(key=<I173>,clearmods=all), Redirect(key=<I176>,clearmods=all)]};
-    key<AD03> { [   e,          E,		NoSymbol,	NoSymbol,	XF86ScrollUp,	XF86ScrollUp    ],
+    key<AD03> { [   e,          E,		NoSymbol,	dead_acute,	XF86ScrollUp,	XF86ScrollUp    ],
 		actions[Group1]=[NoAction(),NoAction(),NoAction(),NoAction(),
 			PtrBtn(button=4),PtrBtn(button=4)]};
-    key<AD04> { [   r,          R,		NoSymbol,	NoSymbol,	XF86AudioNext,	XF86AudioForward],
+    key<AD04> { [   r,          R,		NoSymbol,	dead_circumflex,	XF86AudioNext,	XF86AudioForward],
 		actions[Group1]=[NoAction(),NoAction(),NoAction(),NoAction(),
             Redirect(key=<I171>,clearmods=all), Redirect(key=<I216>,clearmods=all)]};
-    key<AD05> { [   t,          T,		NoSymbol,	NoSymbol,	t,	T],
+    key<AD05> { [   t,          T,		NoSymbol,	dead_diaeresis,	t,	T],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
 			Redirect(key = <AD05>, mods = Control, clearmods = LevelFive),
 			Redirect(key = <AD05>, mods = Control, clearmods = LevelFive)]};
     key<AD06> { [   NoSymbol,   NoSymbol    ]};
-    key<AD07> { [   y,          Y,		NoSymbol,	NoSymbol,	Page_Up,	Page_Up		]};
+    key<AD07> { [   y,          Y,		NoSymbol,	dead_breve,	Page_Up,	Page_Up		]};
 	key<AD08> { [   u,          U,		NoSymbol,	NoSymbol,	Home,		Home		]};
     key<AD09> { [   i,          I,		NoSymbol,	NoSymbol,	Left,		Left	],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
@@ -151,17 +151,17 @@ xkb_symbols "colemak" {
 
 
 
-    key<AD03> { [   f,          F,		NoSymbol,	NoSymbol,	XF86ScrollUp,	XF86ScrollUp    ],
+    key<AD03> { [   f,          F,		NoSymbol,	dead_acute,	XF86ScrollUp,	XF86ScrollUp    ],
 		actions[Group1]=[NoAction(),NoAction(),NoAction(),NoAction(),
 			PtrBtn(button=4),PtrBtn(button=4)]};
-    key<AD04> { [   p,          P,		NoSymbol,	NoSymbol,	XF86AudioNext,	XF86AudioForward],
+    key<AD04> { [   p,          P,		NoSymbol,	dead_circumflex,	XF86AudioNext,	XF86AudioForward],
 		actions[Group1]=[NoAction(),NoAction(),NoAction(),NoAction(),
             Redirect(key=<I171>,clearmods=all), Redirect(key=<I216>,clearmods=all)]};
-    key<AD05> { [   g,          G,		NoSymbol,	NoSymbol,	t,	T],
+    key<AD05> { [   g,          G,		NoSymbol,	dead_diaeresis,	t,	T],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
-			Redirect(key = <AD05>, mods = Control, clearmods = LevelFive),
-			Redirect(key = <AD05>, mods = Control, clearmods = LevelFive)]};
-    key<AD07> { [   j,          J,		NoSymbol,	NoSymbol,	Page_Up,	Page_Up		]};
+			Redirect(key = <AC05>, mods = Control, clearmods = LevelFive),
+			Redirect(key = <AC05>, mods = Control, clearmods = LevelFive)]};
+    key<AD07> { [   j,          J,		NoSymbol,	dead_breve,	Page_Up,	Page_Up		]};
 	key<AD08> { [   l,          L,		NoSymbol,	NoSymbol,	Home,		Home		]};
     key<AD09> { [   u,          U,		NoSymbol,	NoSymbol,	Left,		Left	],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
@@ -183,15 +183,15 @@ xkb_symbols "colemak" {
 			Redirect(key = <AC01>, mods = Control, clearmods = LevelFive)]};
     key<AC02> { [   r,          R,          2,      NoSymbol,	s,	S],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
-			Redirect(key = <AC02>, mods = Control, clearmods = LevelFive),
-			Redirect(key = <AC02>, mods = Control, clearmods = LevelFive)]};
+			Redirect(key = <AC03>, mods = Control, clearmods = LevelFive),
+			Redirect(key = <AC03>, mods = Control, clearmods = LevelFive)]};
     key<AC03> { [   s,          S,          3,		NoSymbol,	XF86ScrollDown,	XF86ScrollDown ],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			PtrBtn(button=5),	PtrBtn(button=5)]};
     key<AC04> { [   t,          T,          4,      NoSymbol,	f,	F    ],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
-			Redirect(key = <AC04>, mods = Control, clearmods = LevelFive),
-			Redirect(key = <AC04>, mods = Control, clearmods = LevelFive)]};
+			Redirect(key = <AD03>, mods = Control, clearmods = LevelFive),
+			Redirect(key = <AD03>, mods = Control, clearmods = LevelFive)]};
     key<AC05> { [   d,          D,          5,          NoSymbol    ]};
     key<AC07> { [   h,          H,          6,          NoSymbol,	Page_Down,	Page_Down    ]};
     key<AC08> { [   n,          N,          7,          NoSymbol,	Left,		Left    ]};
@@ -222,3 +222,23 @@ xkb_symbols "colemak" {
 	key<AB07> { [   k,          K,			NoSymbol,	NoSymbol,	Insert,		Insert		]};
 	key<AB08> { [   m,          M,      	ampersand,  NoSymbol,	Menu,		Menu		]};
 };
+// dead_macron: on AltGr-minus
+// dead_breve: on AltGr-parenleft
+// dead_abovedot: on AltGr-period
+// dead_abovering: on AltGr-0
+// dead_doubleacute: on AltGr-equal (as quotedbl is already used)
+// dead_caron: on AltGr-less (AltGr-shift-comma)
+// dead_cedilla: on AltGr-comma
+// dead_ogonek: on AltGr-semicolon
+// dead_belowdot: on AltGr-underscore (AltGr-shift-minus)
+// dead_hook: on AltGr-question
+// dead_horn: on AltGr-plus (AltGr-shift-equal)
+// dead_diaeresis: on AltGr-colon (Alt-shift-semicolon)
+//
+// those were already there:
+// dead_grave
+// dead_acute
+// dead_circumflex
+// dead_tilde
+// dead_diaeresis
+
