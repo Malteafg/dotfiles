@@ -127,7 +127,7 @@ screens = [
             [
                 widget.Clock(format='%a %I:%M %p'),
                 widget.CurrentLayout(),
-				widget.GroupBox(visible_groups=['a', 's', 'd', 'f']),
+		widget.GroupBox(visible_groups=['a', 's', 'd', 'f']),
                 widget.GroupBox(visible_groups=['u', 'i', 'o', 'p', 'c', 'v']),
                 widget.Prompt(),
                 widget.Chord(

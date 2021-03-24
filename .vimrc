@@ -9,6 +9,8 @@ vnoremap k j
 vnoremap l k
 vnoremap ; l
 vnoremap h ;
+inoremap kj <Esc>
+inoremap jk <Esc>
 set tabstop=4
 set shiftwidth=4
 
