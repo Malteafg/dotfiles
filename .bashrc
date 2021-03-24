@@ -135,6 +135,7 @@ alias bashrc='vim ~/.bashrc'
 alias qtileconf='vim ~/.config/qtile/config.py'
 alias comptonconf='vim ~/.config/compton/compton.conf'
 alias alacrittyconf='vim ~/.config/alacritty/alacritty.yml'
+alias codeconf='vim ~/.config/Code/User/settings.json'
 
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
@@ -157,15 +158,4 @@ pdf() {
 	fi
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+alias mon2cam="~/.deno/bin/deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
