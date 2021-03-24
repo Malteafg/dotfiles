@@ -41,6 +41,10 @@
         },
 		{
 			"before": ["k", "j"], "after": ["<Esc>"]
+		},
+		{
+			"before": ["u", "u"], "after": ["<Esc>", "u", "i"]
+		}
     ],
     "vim.useSystemClipboard": true,
     "vim.handleKeys": {
