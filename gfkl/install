@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 sudo ln -s ~/gfkl/gfkl /usr/share/X11/xkb/symbols/gfkl
 setxkbmap -layout gfkl

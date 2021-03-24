@@ -87,7 +87,32 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+source "$HOME/.cargo/env"
+
+# aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -114,32 +139,33 @@ alias alacrittyconf='vim ~/.config/alacritty/alacritty.yml'
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
 alias ciscostate='/opt/cisco/anyconnect/bin/vpn state'
+ciscovpn() { /opt/cisco/anyconnect/bin/vpn "$@"; }
 
 alias config='/usr/bin/git --git-dir=/home/malte/.dotfiles/ --work-tree=/home/malte'
 
-ciscovpn() { /opt/cisco/anyconnect/bin/vpn "$@"; }
-	
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+pdf() {
+	if [ $# -ne 1 ]; then
+		echo "Usage: $0 <pdf-file>"
+		exit 1
+	fi
+	absolute_path=`readlink -e "$1"`
+	if [ -z "$absolute_path" ]; then
+		echo "$1 does not exist!"
+		exit 1
+	else
+		google-chrome "file://$absolute_path"
+	fi
+}
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-source "$HOME/.cargo/env"
+
+
+
+
+
+
+
+
+
+
