@@ -97,10 +97,13 @@ alias ~='cd ~'
 alias compark='cd ~/Uni/semester4/compark'
 alias linalg='cd ~/Uni/semester4/linalg'
 alias exsys='cd ~/Uni/semester4/exsys'
+alias turbo='cd ~/Uni/semester4/exsys/turbo-projekt'
+alias turbocode='code -a ~/Uni/semester4/exsys/turbo-projekt'
 alias uni='cd ~/Uni'
 alias dwn='cd ~/Downloads'
 
 alias rcompton='killall compton ; compton --config $HOME/.config/compton/compton.conf &'
+alias fixchrome='rm ~/.config/google-chrome/Default/{Login\ Data,Login\ Data-journal}'
 
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
