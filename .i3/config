@@ -26,6 +26,8 @@ font xft:URWGothic-Book 11
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
+focus_follows_mouse no
+
 # start a terminal
 bindsym $mod+Return exec alacritty
 
@@ -58,16 +60,16 @@ bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+g exec google-chrome-stable
 bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
+# bindsym $mod+F3 exec ranger
+# bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+# bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+# bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+# bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -97,9 +99,9 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+workspace_auto_back_and_forth no
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 # bindsym $mod+h split h;exec notify-send 'tile horizontally'
@@ -137,18 +139,22 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+bindsym $mod+slash move workspace to output right
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 a
-set $ws2 s
-set $ws3 d
-set $ws4 f
-set $ws5 u
-set $ws6 i
-set $ws7 o
-set $ws8 p
+set $ws1 1:a
+set $ws2 2:s
+set $ws3 3:d
+set $ws4 4:f
+set $ws5 5:u
+set $ws6 6:i
+set $ws7 7:o
+set $ws8 8:p
+set $ws9 9:disc
+set $ws10 10:spo
 
 # switch to workspace
 bindsym $mod+a workspace $ws1
@@ -159,6 +165,8 @@ bindsym $mod+u workspace $ws5
 bindsym $mod+i workspace $ws6
 bindsym $mod+o workspace $ws7
 bindsym $mod+p workspace $ws8
+bindsym $mod+c workspace $ws9
+bindsym $mod+v workspace $ws10
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+a move container to workspace $ws1
@@ -169,6 +177,8 @@ bindsym $mod+Ctrl+u move container to workspace $ws5
 bindsym $mod+Ctrl+i move container to workspace $ws6
 bindsym $mod+Ctrl+o move container to workspace $ws7
 bindsym $mod+Ctrl+p move container to workspace $ws8
+bindsym $mod+Ctrl+c move container to workspace $ws9
+bindsym $mod+Ctrl+v move container to workspace $ws10
 
 # Move to workspace with focused container
 bindsym $mod+Shift+a move container to workspace $ws1; workspace $ws1
@@ -179,8 +189,12 @@ bindsym $mod+Shift+u move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+i move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+o move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+p move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+c move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+v move container to workspace $ws10; workspace $ws10
 
 # Open applications on specific workspaces
+assign [class="spotify"] $ws9
+assign [class="discord"] $ws10
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
@@ -219,10 +233,10 @@ for_window [class="Xfburn"] floating enable
 for_window [urgent=latest] focus
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Ctrl+r restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -287,6 +301,7 @@ exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec redshift -l 57.01:9.58
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -323,7 +338,7 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status
-	position bottom
+	position top
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
