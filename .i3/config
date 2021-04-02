@@ -50,6 +50,14 @@ exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
+bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause
+bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify previous
+bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotify next
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
 ################################################################################################
 
 # Screen brightness controls
@@ -63,7 +71,7 @@ bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 # bindsym $mod+F3 exec ranger
 # bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill picom
+# bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
@@ -71,8 +79,6 @@ bindsym Print exec --no-startup-id i3-scrot
 # bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 # bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-
-# focus_follows_mouse no
 
 # change focus
 bindsym $mod+j focus left
@@ -106,7 +112,7 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace bac
 # split orientation
 # bindsym $mod+h split h;exec notify-send 'tile horizontally'
 # bindsym $mod+v split v;exec notify-send 'tile vertically'
-# bindsym $mod+q split toggle
+bindsym $mod+t split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+e fullscreen toggle
@@ -156,6 +162,9 @@ set $ws8 8:p
 set $ws9 9:disc
 set $ws10 10:spo
 
+workspace 9:disc output DVI-D-0
+workspace 10:spo output DVI-D-0
+
 # switch to workspace
 bindsym $mod+a workspace $ws1
 bindsym $mod+s workspace $ws2
@@ -193,8 +202,8 @@ bindsym $mod+Shift+c move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+v move container to workspace $ws10; workspace $ws10
 
 # Open applications on specific workspaces
-assign [class="spotify"] $ws9
-assign [class="discord"] $ws10
+assign [class="discord"] $ws9
+for_window [class="Spotify"] move to workspace $ws10
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
@@ -368,7 +377,7 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused          #556064 #FF0000 #80FFF9 #FDF6E3
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
