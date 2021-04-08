@@ -1,19 +1,19 @@
 set number relativenumber
 syntax on
+set so=12
 
-nnoremap j h
-nnoremap k j
-nnoremap l k
-nnoremap ; l
-nnoremap h ;
-vnoremap j h
-vnoremap k j
-vnoremap l k
-vnoremap ; l
-vnoremap h ;
+"nnoremap j h
+"nnoremap k j
+"nnoremap l k
+"nnoremap ; l
+"nnoremap h ;
+"vnoremap j h
+"vnoremap k j
+"vnoremap l k
+"vnoremap ; l
+"vnoremap h ;
 inoremap kj <Esc>
 inoremap jk <Esc>
-inoremap uu <Esc>ui
 
 nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>

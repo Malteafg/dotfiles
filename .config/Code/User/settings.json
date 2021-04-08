@@ -1,49 +1,12 @@
 {
     "editor.lineNumbers": "relative",
     "keyboard.dispatch": "keyCode",
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["h"], "after" : [";"]
-        },
-        {
-            "before": ["j"], "after" : ["h"]
-        },
-        {
-            "before": ["k"], "after" : ["j"]
-        },        
-        {
-            "before": ["l"], "after" : ["k"]
-        },
-        {
-            "before": [";"], "after" : ["l"]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": ["h"], "after" : [";"]
-        },
-        {
-            "before": ["j"], "after" : ["h"]
-        },
-        {
-            "before": ["k"], "after" : ["j"]
-        },        
-        {
-            "before": ["l"], "after" : ["k"]
-        },
-        {
-            "before": [";"], "after" : ["l"]
-        }
-    ],
     "vim.insertModeKeyBindingsNonRecursive": [
         {
             "before": ["j", "k"], "after": ["<Esc>"]
         },
 		{
 			"before": ["k", "j"], "after": ["<Esc>"]
-		},
-		{
-			"before": ["u", "u"], "after": ["<Esc>", "u", "i"]
 		}
     ],
     "vim.useSystemClipboard": true,

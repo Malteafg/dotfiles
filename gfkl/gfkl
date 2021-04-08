@@ -10,7 +10,8 @@ xkb_symbols "basic" {
 
 
 
-    key<TLDE> { [   Escape,         Escape,		Escape,         Escape  ]};
+    key<TLDE> { [   Escape,         Escape,		Escape,         Escape  ],
+		actions[Group1] = [Redirect(key = <ESC>), Redirect(key = <ESC>), Redirect(key = <ESC>), Redirect(key = <ESC>)]};
     key<AE01> { [   asciitilde,     exclam,		asciitilde,     exclam  ]};
     key<AE02> { [   bracketleft,    at,			bracketleft,    at      ,	NoSymbol,	NoSymbol  ],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
@@ -20,7 +21,7 @@ xkb_symbols "basic" {
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			Redirect(key = <TAB>, mods = Control, clearmods = LevelFive),
 			Redirect(key = <TAB>, mods = Control, clearmods = LevelFive)]};
-    key<AE04> { [   asterisk,       dollar,		asterisk,       dollar  ],
+    key<AE04> { [   dollar,       asciicircum,		dollar,       asciicircum  ],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			Redirect(key = <FK04>, mods = Control, clearmods = LevelFive),
 			Redirect(key = <FK04>, mods = Control, clearmods = LevelFive)]};
@@ -28,7 +29,7 @@ xkb_symbols "basic" {
     key<AE06> { [   NoSymbol,       NoSymbol    ]};
     key<AE07> { [   NoSymbol,       NoSymbol    ]};
     key<AE08> { [   NoSymbol,       NoSymbol    ]};
-    key<AE09> { [   plus,	        asciicircum,	plus,	asciicircum ]};
+    key<AE09> { [   plus,	        asterisk,	plus,	asterisk ]};
     key<AE10> { [   parenleft,      braceleft,	parenleft,  braceleft,	Down,	Down	],	
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			Redirect(key = <DOWN>, mods = Control, clearmods = LevelFive),
@@ -46,7 +47,7 @@ xkb_symbols "basic" {
     key<AD01> { [   q,          Q,		NoSymbol,	dead_tilde,	XF86AudioPlay],
 			actions[Group1]=[NoAction(), NoAction(), NoAction(), NoAction(),
 				Redirect(key=<I208>, clearmods=all)]};
-    key<AD02> { [   w,          W,		NoSymbol,	dead_grave,	XF86AudioPrev],
+    key<AD02> { [   w,          W,		grave,		dead_grave,	XF86AudioPrev],
 			actions[Group1]=[NoAction(), NoAction(), NoAction(), NoAction(),
 				Redirect(key=<I173>, clearmods=all)]};
     key<AD03> { [   e,          E,		NoSymbol,	dead_acute,	XF86AudioNext],
@@ -59,18 +60,18 @@ xkb_symbols "basic" {
 			actions[Group1]=[NoAction(), NoAction(), NoAction(), NoAction(),
 				Redirect(key=<VOL+>, clearmods=all)]};
     key<AD06> { [   NoSymbol,   NoSymbol    ]};
-    key<AD07> { [   y,          Y,		NoSymbol,	dead_breve,	Page_Up,	Page_Up		]};
-	key<AD08> { [   u,          U,		NoSymbol,	NoSymbol,	Home,		Home		]};
-    key<AD09> { [   i,          I,		NoSymbol,	NoSymbol,	Left,		Left	],
+    key<AD07> { [   y,          Y,		NoSymbol,	dead_breve,	Home,		Home		]};
+	key<AD08> { [   u,          U,		NoSymbol,	NoSymbol,	Left,		Left		],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
 			Redirect(key = <LEFT>, mods = Control, clearmods = LevelFive),
 			Redirect(key = <LEFT>, mods = Control + Shift, clearmods = LevelFive)]};
-    key<AD10> { [   o,          O,		NoSymbol,	NoSymbol,	Right,		Right],
+    key<AD09> { [   i,          I,		NoSymbol,	NoSymbol,	Right,		Right	],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(), 
 			Redirect(key = <RGHT>, mods = Control, clearmods = LevelFive),
 			Redirect(key = <RGHT>, mods = Control + Shift, clearmods = LevelFive)]};
-    key<AD11> { [   p,          P,		NoSymbol,	NoSymbol,	End,		End		]};
-    key<AD12> { [   equal,      percent,	equal,	percent,	BackSpace,	BackSpace	]};
+    key<AD10> { [   o,          O,		NoSymbol,	NoSymbol,	End,		End]};
+    key<AD11> { [   p,          P,		NoSymbol,	NoSymbol,	Delete,		Delete		]};
+    key<AD12> { [   equal,      percent,	equal,	percent,	Page_Up,	Page_Up	]};
 
 
 
@@ -93,15 +94,12 @@ xkb_symbols "basic" {
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			Redirect(key=<VOL->, clearmods=all)]};
     key<AC06> { [   NoSymbol,   NoSymbol,   NoSymbol,   NoSymbol    ]};
-    key<AC07> { [   h,          H,          6,          NoSymbol,	Page_Down,	Page_Down    ]};
-    key<AC08> { [   j,          J,          7,          NoSymbol,	Left,		Left    ]};
-    key<AC09> { [   k,          K,          8,          NoSymbol,	Down,		Down    ]};
-    key<AC10> { [   l,          L,          9,          NoSymbol,	Up,			Up	    ]};
-    key<AC11> { [   semicolon,  colon,      0,          NoSymbol,	Right,		Right   ]};
-    key<BKSL> { [   apostrophe, quotedbl,   NoSymbol,   NoSymbol,	BackSpace,	BackSpace    ],
-		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
-			Redirect(key = <BKSP>, mods = Control, clearmods = LevelFive),
-			Redirect(key = <BKSP>, mods = Control, clearmods = LevelFive)]};
+    key<AC07> { [   h,          H,          6,          NoSymbol,	Left,		Left    ]};
+    key<AC08> { [   j,          J,          7,          NoSymbol,	Down,		Down    ]};
+    key<AC09> { [   k,          K,          8,          NoSymbol,	Up,			Up	    ]};
+    key<AC10> { [   l,          L,          9,          NoSymbol,	Right,		Right   ]};
+    key<AC11> { [   semicolon,  colon,      0,          NoSymbol,	BackSpace,	BackSpace   ]};
+    key<BKSL> { [   apostrophe, quotedbl,   NoSymbol,   NoSymbol,	Page_Down,	Page_Down   ]};
 
 
 
@@ -130,7 +128,10 @@ xkb_symbols "basic" {
 			LockMods(mods=Lock), LockMods(mods=Lock)]};
 	key<AB07> { [   n,          N,			NoSymbol,	NoSymbol,	Insert,		Insert		]};
 	key<AB08> { [   m,          M,      	ampersand,  NoSymbol,	Menu,		Menu		]};
-	key<AB09> { [   comma,      less,       comma,		less,		Delete,		Delete		]};
+	key<AB09> { [   comma,      less,       comma,		less,		BackSpace,	BackSpace	],
+		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
+			Redirect(key = <BKSP>, mods = Control, clearmods = LevelFive),
+			Redirect(key = <BKSP>, mods = Control, clearmods = LevelFive)]};
     key<AB10> { [   period,     greater,	period,		greater,	Delete,		Delete		],
 		actions[Group1] = [NoAction(), NoAction(), NoAction(), NoAction(),
 			Redirect(key = <DELE>, mods = Control, clearmods = LevelFive),
