@@ -112,6 +112,8 @@ if ! shopt -oq posix; then
 fi
 source "$HOME/.cargo/env"
 
+shopt -s autocd
+
 # aliases
 alias ll='ls -alF'
 alias la='ls -A'

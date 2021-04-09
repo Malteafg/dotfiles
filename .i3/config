@@ -20,10 +20,9 @@ bindsym $mod+m bar mode toggle
 
 bindsym $mod+Shift+g mode "$mode_gaps"
 bindsym $mod+q mode "$mode_system"
-bindsym $mod+semicolon mode "resize"
+bindsym $mod+Shift+e mode "resize"
 
-bindsym $mod+w mode $close
-bindsym $mod+Shift+w kill
+bindsym $mod+w kill
 # bindsym $mod+9 exec --no-startup-id blurlock
 
 ################################################################################################
@@ -46,12 +45,17 @@ bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+Return exec alacritty
 bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+r exec --no-startup-id dmenu_recency
-bindsym $mod+z exec --no-startup-id morc_menu
 bindsym $mod+g exec google-chrome-stable
-bindsym $mod+F3 exec pcmanfm
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+Ctrl+t exec --no-startup-id picom -b
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+bindsym $mod+semicolon exec "alacritty --class floatterm,floatterm" 
+for_window [class="floatterm"] floating enable resize set 800 200
+
+bindsym $mod+apostrophe exec "alacritty --class floatranger,floatranger -e ranger"
+for_window [class="floatranger"] floating enable
+
+bindsym $mod+Shift+apostrophe exec pcmanfm
+bindsym $mod+Ctrl+apostrophe exec pcmanfm_pkexec
+bindsym $mod+Ctrl+w --release exec --no-startup-id xkill
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 ################################################################################################
@@ -114,8 +118,6 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
 bindsym $mod+slash move workspace to output right
 
 ################################################################################################
