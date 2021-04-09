@@ -48,10 +48,10 @@ bindsym $mod+r exec --no-startup-id dmenu_recency
 bindsym $mod+g exec google-chrome-stable
 
 bindsym $mod+semicolon exec "alacritty --class floatterm,floatterm" 
-for_window [class="floatterm"] floating enable resize set 800 200
+for_window [class="floatterm"] floating enable sticky enable resize set 800 200
 
 bindsym $mod+apostrophe exec "alacritty --class floatranger,floatranger -e ranger"
-for_window [class="floatranger"] floating enable
+for_window [class="floatranger"] floating enable sticky enable
 
 bindsym $mod+Shift+apostrophe exec pcmanfm
 bindsym $mod+Ctrl+apostrophe exec pcmanfm_pkexec

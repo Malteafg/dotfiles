@@ -142,6 +142,13 @@ alias codeconf='vim ~/.config/Code/User/settings.json'
 alias i3conf='vim ~/.i3/config'
 alias gesturesconf='vim ~/.config/libinput-gestures.conf'
 
+alias gfklbasic='xdg-open $(cat gfkl/images/basic) && exit'
+alias gfklcaps='xdg-open $(cat gfkl/images/caps) && exit'
+alias gfkli3='xdg-open $(cat gfkl/images/i3) && exit'
+alias wgfklbasic='xclip -o > gfkl/images/basic && exit'
+alias wgfklcaps='xclip -o > gfkl/images/caps && exit'
+alias wgfkli3='xclip -o > gfkl/images/i3 && exit'
+
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
 alias ciscostate='/opt/cisco/anyconnect/bin/vpn state'
