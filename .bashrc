@@ -116,7 +116,7 @@ source "$HOME/.cargo/env"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias gfkl='vim ~/gfkl/gfkl'
+alias egfkl='vim ~/gfkl/linux/gfkl'
 alias ..='cd ..'
 alias ~='cd ~'
 
