@@ -5,18 +5,11 @@ syntax on
 set so=12
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Jump to anywhere you want with minimal keystrokes, with just one key
-" binding.
-" " `s{char}{label}`
-vmap s <Plug>(easymotion-bd-w)
-map S <Plug>(easymotion-overwin-w)
-map s <Plug>(easymotion-overwin-f2)
-" " Turn on case-insensitive feature
-" " Turn on case-insensitive feature
-" " Turn on case-insensitive feature
+map s <Plug>(easymotion-bd-w)
+map S <Plug>(easymotion-bd-f2)
+nmap S <Plug>(easymotion-overwin-w)
+nmap s <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
-" " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
