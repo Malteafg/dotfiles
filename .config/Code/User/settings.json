@@ -3,10 +3,10 @@
     "keyboard.dispatch": "keyCode",
     "vim.insertModeKeyBindingsNonRecursive": [
         {
-            "before": ["w", "f"], "after": ["<Esc>"]
+            "before": ["u", "y"], "after": ["<Esc>"]
         },
 		{
-			"before": ["f", "w"], "after": ["<Esc>"]
+			"before": ["y", "u"], "after": ["<Esc>"]
 		}
     ],
     "vim.useSystemClipboard": true,
