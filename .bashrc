@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+tmux
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -111,7 +113,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-shopt -s autocd
+export EDITOR='vim'
+export VISUAL='vim'
 
 # aliases
 alias ll='ls -alF'
@@ -174,3 +177,56 @@ pdf() {
 alias mon2cam="~/.deno/bin/deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 export BROWSER="/usr/bin/google-chrome-stable"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+
+pacs() {
+    sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
+}
+
+bind '"\C-t":"open_with_fzf\n"'
+bind '"\C-f":"cd_with_fzf\n"'
+
+open_with_fzf() {
+        fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
+}
+
+cd_with_fzf() {
+        cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && tree -L 1
+}
+
+pacs() {
+        sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
+}
+
+statusall() {
+    git -C ~/uni status
+    git -C ~/gfkl status
+    git -C ~/vimwiki status
+    config status
+}
+
+commitall() {
+    git -C ~/uni commit -a
+    git -C ~/gfkl commit -a
+    git -C ~/vimwiki commit -a
+    config commit -a
+}
+
+pushall() {
+    git -C ~/uni push
+    git -C ~/gfkl push
+    git -C ~/vimwiki push
+    config push
+}
+
+pullall() {
+    git -C ~/uni pull
+    git -C ~/gfkl pull
+    git -C ~/vimwiki pull
+    config pull
+}
+
+addall() {
+    git -C ~/uni add --all
+    git -C ~/gfkl add --all
+    git -C ~/vimwiki add --all
+}

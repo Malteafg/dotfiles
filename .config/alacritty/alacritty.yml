@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  TERM: alacritty
 
 window:
   dimensions:
@@ -48,7 +48,7 @@ window:
     instance: Alacritty
     general: Alacritty
 
-background_opacity: 0.9
+background_opacity: 0.94
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -140,7 +140,6 @@ colors:
     cyan:    '#427b58'
     white:   '#928374'
   # indexed_colors: []
-
   # Keyboard hints
   #hints:
     # Fist character in the hint label
