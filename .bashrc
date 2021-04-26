@@ -2,8 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-tmux
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -229,4 +227,8 @@ addall() {
     git -C ~/uni add --all
     git -C ~/gfkl add --all
     git -C ~/vimwiki add --all
+}
+
+startlog() {
+    sudo logkeys --start --output ~/proj/logging/keys.log --keymap ~/proj/keylyzer/workmak.keymap --device event2 --no-timestamps
 }

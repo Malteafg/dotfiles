@@ -47,7 +47,7 @@ bindsym $mod+Ctrl+l exec pavucontrol
 bindsym $mod+p exec --no-startup-id dmenu_recency
 bindsym $mod+g exec google-chrome-stable
 
-bindsym $mod+o exec "alacritty --class floatterm,floatterm" 
+bindsym $mod+semicolon exec "alacritty --class floatterm,floatterm" 
 for_window [class="floatterm"] floating enable sticky enable resize set 800 200
 
 bindsym $mod+apostrophe exec "alacritty --class floatranger,floatranger -e ranger"
@@ -129,12 +129,14 @@ set $ws4 4:t
 set $ws5 5:f
 set $ws6 6:u
 set $ws7 7:y
-set $ws8 8:;
-set $ws9 9:disc
-set $ws10 10:spo
+set $ws8 8:disc
+set $ws9 9:spo
 
-workspace 9:disc output DVI-D-0
-workspace 10:spo output DVI-D-0
+workspace 5:disc output DVI-D-0
+workspace 6:disc output DVI-D-0
+workspace 7:disc output DVI-D-0
+workspace 8:disc output DVI-D-0
+workspace 9:spo output DVI-D-0
 
 # switch to workspace
 bindsym $mod+a workspace $ws1
@@ -144,9 +146,8 @@ bindsym $mod+t workspace $ws4
 bindsym $mod+f workspace $ws5
 bindsym $mod+u workspace $ws6
 bindsym $mod+y workspace $ws7
-bindsym $mod+semicolon workspace $ws8
-bindsym $mod+c workspace $ws9
-bindsym $mod+v workspace $ws10
+bindsym $mod+c workspace $ws8
+bindsym $mod+v workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+a move container to workspace $ws1
@@ -156,9 +157,8 @@ bindsym $mod+Ctrl+t move container to workspace $ws4
 bindsym $mod+Ctrl+f move container to workspace $ws5
 bindsym $mod+Ctrl+u move container to workspace $ws6
 bindsym $mod+Ctrl+y move container to workspace $ws7
-bindsym $mod+Ctrl+semicolon move container to workspace $ws8
-bindsym $mod+Ctrl+c move container to workspace $ws9
-bindsym $mod+Ctrl+v move container to workspace $ws10
+bindsym $mod+Ctrl+c move container to workspace $ws8
+bindsym $mod+Ctrl+v move container to workspace $ws9
 
 # Move to workspace with focused container
 bindsym $mod+Shift+a move container to workspace $ws1; workspace $ws1
@@ -168,17 +168,12 @@ bindsym $mod+Shift+t move container to workspace $ws4; workspace $ws4
 bindsym $mod+Shift+f move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+u move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+y move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+semicolon move container to workspace $ws8; workspace $ws8
-bindsym $mod+Shift+c move container to workspace $ws9; workspace $ws9
-bindsym $mod+Shift+v move container to workspace $ws10; workspace $ws10
+bindsym $mod+Shift+c move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+v move container to workspace $ws9; workspace $ws9
 
 # Open applications on specific workspaces
-for_window [class="discord"] move to workspace $ws9
-for_window [class="Spotify"] move to workspace $ws10
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+for_window [class="discord"] move to workspace $ws8
+for_window [class="Spotify"] move to workspace $ws9
 
 ################################################################################################
 # FLOATING APPS
@@ -283,7 +278,8 @@ exec --no-startup-id xautolock -time 25 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec redshift -l 57.01:9.58
-exec --no-startup-id setxkbmap -layout gfkl -variant workmak -model pc105 -option altwin:swap_lalt_lwin
+exec --no-startup-id setxkbmap -layout gfkl -model pc105 -option altwin:swap_lalt_lwin
+exec xcape -e '#66=Escape' -t 200
 
 ################################################################################################
 # COLORS

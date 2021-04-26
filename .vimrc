@@ -21,8 +21,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'vimwiki/vimwiki'
 Plug 'morhetz/gruvbox'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
+
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='soft'
@@ -36,8 +40,27 @@ hi SignColumn ctermbg=NONE guibg=NONE
 nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
-inoremap uy <Esc>
-inoremap yu <Esc>
+noremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>p "_dP
+
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+"noremap <Up> :m '>+1<CR>gv=gv
+"noremap <Down> :m '<-2<CR>gv=gv
+"noremap <Left> <<
+"noremap <Right> >>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 noremap ( {
 noremap ) }
