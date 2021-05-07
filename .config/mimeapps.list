@@ -1,9 +1,9 @@
 [Default Applications]
-x-scheme-handler/http=google-chrome-stable.desktop
-x-scheme-handler/https=google-chrome-stable.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/ftp=google-chrome-stable.desktop
 x-scheme-handler/chrome=google-chrome-stable.desktop
-text/html=google-chrome-stable.desktop
+text/html=google-chrome.desktop
 application/x-extension-htm=google-chrome-stable.desktop
 application/x-extension-html=google-chrome-stable.desktop
 application/x-extension-shtml=google-chrome-stable.desktop
@@ -16,6 +16,9 @@ text/plain=vim.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
 application/x-bittorrent=deluge.desktop
+application/pdf=google-chrome.desktop;
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
 
 [Added Associations]
 x-scheme-handler/http=google-chrome-stable.desktop;
