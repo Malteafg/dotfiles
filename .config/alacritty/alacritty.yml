@@ -61,18 +61,18 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: monospace
+    family: DejaVu Sans Mono
     style: Regular
   bold:
-    family: monospace
+    family: DejaVu Sans Mono
     style: Bold
   italic:
-    family: monospace
+    family: DejaVu Sans Mono
     style: Italic
   bold_italic:
-    family: monospace
+    family: DejaVu Sans Mono
     style: Bold Italic
-  size: 11.0
+  size: 10.0
   offset:
     x: 0
     y: 1
@@ -627,7 +627,7 @@ colors:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-key_bindings:
+#key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -660,10 +660,10 @@ key_bindings:
   #- { key: V,      mods: Control,       mode: Vi|~Search, action: ToggleBlockSelection    }
   #- { key: V,      mods: Alt,           mode: Vi|~Search, action: ToggleSemanticSelection }
   #- { key: Return,                      mode: Vi|~Search, action: Open                    }
-  - { key: L,                           mode: Vi|~Search, action: Up                      }
-  - { key: K,                           mode: Vi|~Search, action: Down                    }
-  - { key: J,                           mode: Vi|~Search, action: Left                    }
-  - { key: Semicolon,                   mode: Vi|~Search, action: Right                   }
+  #- { key: L,                           mode: Vi|~Search, action: Up                      }
+  #- { key: K,                           mode: Vi|~Search, action: Down                    }
+  #- { key: J,                           mode: Vi|~Search, action: Left                    }
+  #- { key: Semicolon,                   mode: Vi|~Search, action: Right                   }
   #- { key: Up,                          mode: Vi|~Search, action: Up                      }
   #- { key: Down,                        mode: Vi|~Search, action: Down                    }
   #- { key: Left,                        mode: Vi|~Search, action: Left                    }

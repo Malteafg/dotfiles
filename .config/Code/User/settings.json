@@ -1,14 +1,6 @@
 {
     "editor.lineNumbers": "relative",
     "keyboard.dispatch": "keyCode",
-    "vim.insertModeKeyBindingsNonRecursive": [
-        {
-            "before": ["u", "y"], "after": ["<Esc>"]
-        },
-		{
-			"before": ["y", "u"], "after": ["<Esc>"]
-		}
-    ],
     "vim.useSystemClipboard": true,
     "vim.handleKeys": {
         "<C-a>": false,

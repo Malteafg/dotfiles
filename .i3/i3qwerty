@@ -1,0 +1,10 @@
+#!/bin/bash
+
+killall -q xcape
+
+cat ~/.i3/baseconfig > ~/.i3/config
+cat ~/.i3/qwertykeys >> ~/.i3/config
+
+setxkbmap -layout gfkl -variant qwerty -model pc105 -option altwin:swap_lalt_lwin
+
+i3-msg reload

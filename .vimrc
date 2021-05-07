@@ -25,6 +25,9 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+iabbrev </ </<C-X><C-O>
+
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 

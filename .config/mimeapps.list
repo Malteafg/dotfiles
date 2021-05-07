@@ -15,7 +15,6 @@ image/png=viewnior.desktop;gpicview.desktop;
 text/plain=vim.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
-application/pdf=google-chrome-stable.desktop
 application/x-bittorrent=deluge.desktop
 
 [Added Associations]
@@ -36,4 +35,4 @@ text/plain=vim.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 message/rfc822=userapp-Thunderbird.desktop;
 application/x-bittorrent=deluge.desktop;
-application/pdf=google-chrome-stable.desktop
+application/pdf=google-chrome.desktop;

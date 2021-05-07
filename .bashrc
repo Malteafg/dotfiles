@@ -30,11 +30,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -43,7 +38,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -63,15 +58,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\w\a\] $PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -85,20 +71,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -111,27 +88,25 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 export EDITOR='vim'
 export VISUAL='vim'
+export BROWSER="/usr/bin/google-chrome-stable"
 
 # aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias egfkl='vim ~/gfkl/linux/gfkl'
+alias gfkl='vim ~/gfkl/linux/gfkl'
 alias ..='cd ..'
-alias ~='cd ~'
-
-alias compark='cd ~/uni/semester4/compark'
-alias linalg='cd ~/uni/semester4/linalg'
-alias exsys='cd ~/uni/semester4/exsys'
-alias turbo='cd ~/uni/semester4/exsys/turbo-projekt'
-alias turbocode='code -a ~/uni/semester4/exsys/turbo-projekt'
-alias uni='cd ~/uni'
-alias dwn='cd ~/Downloads'
-
-alias rcompton='killall compton ; compton --config $HOME/.config/compton/compton.conf &'
-alias fixchrome='rm ~/.config/google-chrome/Default/{Login\ Data,Login\ Data-journal}'
 
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
@@ -142,15 +117,13 @@ alias codeconf='vim ~/.config/Code/User/settings.json'
 alias i3conf='vim ~/.i3/config'
 alias gesturesconf='vim ~/.config/libinput-gestures.conf'
 
-alias gfklbasic='xdg-open $(cat ~/gfkl/images/basic) && exit'
-alias gfklcaps='xdg-open $(cat ~/gfkl/images/caps) && exit'
-alias gfkli3='xdg-open $(cat ~/gfkl/images/i3) && exit'
-alias gfklcolemak='xdg-open $(cat ~/gfkl/images/colemak) && exit'
-
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
 alias ciscostate='/opt/cisco/anyconnect/bin/vpn state'
 ciscovpn() { /opt/cisco/anyconnect/bin/vpn "$@"; }
+
+alias goworkmak='~/.i3/i3workmak'
+alias goqwerty='~/.i3/i3qwerty'
 
 alias config='/usr/bin/git --git-dir=/home/malte/.dotfiles/ --work-tree=/home/malte'
 
@@ -158,22 +131,7 @@ alaopa() {
 	sed -i "s~background_opacity.*~background_opacity: $@~g" .config/alacritty/alacritty.yml
 }
 
-pdf() {
-	if [ $# -ne 1 ]; then
-		echo "Usage: $0 <pdf-file>"
-		exit 1
-	fi
-	absolute_path=`readlink -e "$1"`
-	if [ -z "$absolute_path" ]; then
-		echo "$1 does not exist!"
-		exit 1
-	else
-		google-chrome "file://$absolute_path"
-	fi
-}
-
 alias mon2cam="~/.deno/bin/deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
-export BROWSER="/usr/bin/google-chrome-stable"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
 pacs() {
