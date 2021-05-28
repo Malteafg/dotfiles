@@ -61,8 +61,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+equal move scratchpad
+bindsym $mod+equal scratchpad show
+
+bindsym $mod+minus exec /home/malte/.i3/switchlayout
 
 #navigate workspaces next / previous
 bindsym $mod+slash move workspace to output right
