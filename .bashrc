@@ -107,6 +107,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias gfkl='vim ~/gfkl/linux/gfkl'
 alias ..='cd ..'
+alias ~='cd ~'
 
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
@@ -151,40 +152,6 @@ cd_with_fzf() {
 
 pacs() {
         sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
-}
-
-statusall() {
-    git -C ~/uni status
-    git -C ~/gfkl status
-    git -C ~/vimwiki status
-    config status
-}
-
-commitall() {
-    git -C ~/uni commit -a
-    git -C ~/gfkl commit -a
-    git -C ~/vimwiki commit -a
-    config commit -a
-}
-
-pushall() {
-    git -C ~/uni push
-    git -C ~/gfkl push
-    git -C ~/vimwiki push
-    config push
-}
-
-pullall() {
-    git -C ~/uni pull
-    git -C ~/gfkl pull
-    git -C ~/vimwiki pull
-    config pull
-}
-
-addall() {
-    git -C ~/uni add --all
-    git -C ~/gfkl add --all
-    git -C ~/vimwiki add --all
 }
 
 startlog() {
