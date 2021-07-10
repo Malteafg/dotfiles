@@ -57,6 +57,8 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+noremap h <Nop>
+noremap l <Nop>
 
 "noremap <Up> :m '>+1<CR>gv=gv
 "noremap <Down> :m '<-2<CR>gv=gv
