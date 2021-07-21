@@ -28,6 +28,8 @@ call plug#end()
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 iabbrev </ </<C-X><C-O>
 
+let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/'}]
+
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 

@@ -25,11 +25,15 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 ################################################################################################
 # PROGRAMS
-bindsym $mod+semicolon exec "alacritty --class floatterm,floatterm" 
-for_window [class="floatterm"] floating enable sticky enable resize set 800 200
+bindsym $mod+semicolon exec "alacritty --class smallterm,smallterm" 
+for_window [class="smallterm"] floating enable sticky enable resize set 800 200
+for_window [class="smallterm"] move position center
 
-bindsym $mod+apostrophe exec "alacritty --class floatranger,floatranger -e ranger"
-for_window [class="floatranger"] floating enable sticky enable
+bindsym $mod+apostrophe exec "alacritty --class floatranger,floatterm -e ranger"
+bindsym $mod+Shift+apostrophe exec "alacritty --class floattop,floatterm -e htop"
+bindsym $mod+Ctrl+apostrophe exec "pcmanfm --class floatpcman,floatterm"
+for_window [class="floatterm"] floating enable sticky enable resize set 1400 900
+for_window [class="floatterm"] move position center
 
 ################################################################################################
 # PRINT SCREEN
@@ -70,8 +74,9 @@ bindsym $mod+minus exec /home/malte/.i3/switchlayout
 bindsym $mod+slash move workspace to output right
 
 # Open applications on specific workspaces
-for_window [class="discord"] move to workspace $ws8
-for_window [class="Spotify"] move to workspace $ws9
+for_window [class="Steam"] move to workspace $ws8
+for_window [class="discord"] move to workspace $ws9
+for_window [class="Spotify"] move to workspace $ws10
 
 ################################################################################################
 # FLOATING APPS
@@ -84,6 +89,9 @@ for_window [class="fpakman"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Manjaro-hello"] floating enable
@@ -163,20 +171,17 @@ mode "resize" {
 # AUTOSTART
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec eval `ssh-agent`
-# exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 25 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec redshift -l 57.01:9.58
+exec_always --no-startup-id xrandr --output HDMI-0 --primary
 
 ################################################################################################
 # COLORS
