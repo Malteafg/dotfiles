@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cat ~/.i3/baseconfig > ~/.i3/config
+
+[[ "$(setxkbmap -query | grep variant | awk '{print $NF}')" == "qwerty" ]] &&
+    cat ~/.i3/qwertykeys >> ~/.i3/config ||
+    cat ~/.i3/wokmokkeys >> ~/.i3/config
+
+i3-msg reload

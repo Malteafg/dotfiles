@@ -1,0 +1,121 @@
+# i3 config (v4)
+
+bindsym $mod+Shift+m exec ~/.i3/reloadconfig
+bindsym $mod+Ctrl+m restart
+bindsym $mod+p bar mode toggle
+
+bindsym $mod+Ctrl+l mode "$mode_gaps"
+bindsym $mod+q mode "$mode_system"
+bindsym $mod+Shift+l mode "resize"
+
+bindsym $mod+c kill
+
+################################################################################################
+# PROGRAMS
+bindsym $mod+Ctrl+k exec terminal -e 'bmenu'
+bindsym $mod+Return exec alacritty
+bindsym $mod+Ctrl+p exec pavucontrol
+bindsym $mod+m exec --no-startup-id dmenu_recency
+bindsym $mod+g exec google-chrome-stable
+
+bindsym $mod+Ctrl+c --release exec --no-startup-id xkill
+# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+
+################################################################################################
+# NAVIGATION
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+n focus down
+bindsym $mod+e focus up
+bindsym $mod+i focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+n move down
+bindsym $mod+Shift+e move up
+bindsym $mod+Shift+i move right
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+l fullscreen toggle
+
+################################################################################################
+# WORKSPACES
+set $ws1 1:a
+set $ws2 2:s
+set $ws3 3:r
+set $ws4 4:t
+set $ws5 5:u
+set $ws6 6:y
+set $ws7 7:f
+set $ws8 8:steam
+set $ws9 9:disc
+set $ws10 10:spo
+
+workspace $ws1 output HDMI-0
+workspace $ws2 output HDMI-0
+workspace $ws3 output HDMI-0
+workspace $ws4 output HDMI-0
+workspace $ws5 output DVI-D-0
+workspace $ws6 output DVI-D-0
+workspace $ws7 output DVI-D-0
+workspace $ws8 output DVI-D-0
+workspace $ws9 output DVI-D-0
+workspace $ws10 output DVI-D-0
+
+# switch to workspace
+bindsym $mod+a workspace number $ws1
+bindsym $mod+s workspace number $ws2
+bindsym $mod+r workspace number $ws3
+bindsym $mod+t workspace number $ws4
+bindsym $mod+u workspace number $ws5
+bindsym $mod+y workspace number $ws6
+bindsym $mod+f workspace number $ws7
+bindsym $mod+w workspace number $ws8
+bindsym $mod+d workspace number $ws9
+bindsym $mod+j workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+a move container to workspace number $ws1
+bindsym $mod+Ctrl+s move container to workspace number $ws2
+bindsym $mod+Ctrl+r move container to workspace number $ws3
+bindsym $mod+Ctrl+t move container to workspace number $ws4
+bindsym $mod+Ctrl+u move container to workspace number $ws5
+bindsym $mod+Ctrl+y move container to workspace number $ws6
+bindsym $mod+Ctrl+f move container to workspace number $ws7
+bindsym $mod+Ctrl+w move container to workspace number $ws8
+bindsym $mod+Ctrl+d move container to workspace number $ws9
+bindsym $mod+Ctrl+j move container to workspace number $ws10
+
+# Move to workspace with focused container
+bindsym $mod+Shift+a move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+s move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+r move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+t move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+u move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Shift+y move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+f move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Shift+w move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+Shift+d move container to workspace number $ws9; workspace number $ws9
+bindsym $mod+Shift+j move container to workspace number $ws10; workspace number $ws10
+
+################################################################################################
+# RESIZE
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym n resize grow height 5 px or 5 ppt
+        bindsym e resize shrink height 5 px or 5 ppt
+        bindsym i resize grow width 5 px or 5 ppt
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+exec --no-startup-id setxkbmap -layout gfkl -variant wokmok_lshift -model pc105 -option altwin:swap_lalt_lwin
+exec xcape -e '#66=Escape;#23=Tab' -t 200

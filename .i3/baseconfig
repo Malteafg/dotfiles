@@ -9,6 +9,8 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 focus_follows_mouse no
 
+font pango:mono 0
+
 ################################################################################################
 # SOUND 
 
@@ -48,8 +50,8 @@ bindsym $mod+Ctrl+parenright --release exec --no-startup-id i3-scrot -s
 ################################################################################################
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth no
-bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+# bindsym $mod+Tab workspace back_and_forth
+# bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 bindsym $mod+comma split v
@@ -68,7 +70,8 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+equal move scratchpad
 bindsym $mod+equal scratchpad show
 
-bindsym $mod+minus exec /home/malte/.i3/switchlayout
+bindsym $mod+minus exec ~/.i3/switchlayout -a
+bindsym $mod+Ctrl+minus exec ~/.i3/switchlayout
 
 #navigate workspaces next / previous
 bindsym $mod+slash move workspace to output right
@@ -143,31 +146,6 @@ mode "$mode_system" {
 }
 
 ################################################################################################
-# RESIZE
-# Resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym y resize shrink width 5 px or 5 ppt
-        bindsym n resize grow height 5 px or 5 ppt
-        bindsym e resize shrink height 5 px or 5 ppt
-        bindsym i resize grow width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-################################################################################################
 # AUTOSTART
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
@@ -234,13 +212,9 @@ bar {
 	status_command i3status
 	position top
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
+    font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
 
     colors {

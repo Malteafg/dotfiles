@@ -108,23 +108,24 @@ alias l='ls -CF'
 alias gfkl='vim ~/gfkl/linux/gfkl'
 alias ..='cd ..'
 alias ~='cd ~'
+alias rb='source ~/.bashrc'
 
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
-alias qtileconf='vim ~/.config/qtile/config.py'
 alias comptonconf='vim ~/.config/compton/compton.conf'
 alias alacrittyconf='vim ~/.config/alacritty/alacritty.yml'
 alias codeconf='vim ~/.config/Code/User/settings.json'
-alias i3conf='vim ~/.i3/config'
 alias gesturesconf='vim ~/.config/libinput-gestures.conf'
+
+alias sxiv='swallow sxiv'
+
+alias sshs='eval `ssh-agent` && ssh-add'
+alias sshq='kill $SSH_AGENT_PID'
 
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
 alias ciscostate='/opt/cisco/anyconnect/bin/vpn state'
 ciscovpn() { /opt/cisco/anyconnect/bin/vpn "$@"; }
-
-alias goworkmak='~/.i3/i3workmak'
-alias goqwerty='~/.i3/i3qwerty'
 
 alias config='/usr/bin/git --git-dir=/home/malte/.dotfiles/ --work-tree=/home/malte'
 
@@ -135,25 +136,37 @@ alaopa() {
 alias mon2cam="~/.deno/bin/deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
-pacs() {
-    sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
-}
-
 bind '"\C-t":"open_with_fzf\n"'
 bind '"\C-f":"cd_with_fzf\n"'
 
 open_with_fzf() {
-        fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
+    fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
 }
 
 cd_with_fzf() {
-        cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && tree -L 1
+    cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && tree -L 1
 }
 
 pacs() {
-        sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
+    sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
 }
 
-startlog() {
-    sudo logkeys --start --output ~/proj/logging/keys.log --keymap ~/proj/keylyzer/workmak.keymap --device event2 --no-timestamps
+cdn() {
+    mkdir -p -- "$1" && cd -P -- "$1"
+}
+
+mvr() {
+    unset -v latest
+    for file in ~/{Downloads,Pictures}/*; do
+      [[ $file -nt $latest ]] && latest=$file
+    done
+    mv -i "$latest" $([[ "${1##*/}" == *.* ]] && echo "$1" || echo "$1.${latest##*.}")
+}
+
+copy() {
+    xclip -sel c < "$1"
+}
+
+paste() {
+    xclip -o > "$1"
 }

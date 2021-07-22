@@ -21,7 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'vimwiki/vimwiki'
 Plug 'morhetz/gruvbox'
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
 
 call plug#end()
 
@@ -42,6 +42,10 @@ hi Normal ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
+
 nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
@@ -49,6 +53,8 @@ nnoremap <leader>y <S-v>"+y
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "_dP
+
+nnoremap <leader>a gg<S-v>G
 
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
