@@ -70,8 +70,8 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+equal move scratchpad
 bindsym $mod+equal scratchpad show
 
-bindsym $mod+minus exec ~/.i3/switchlayout -a
-bindsym $mod+Ctrl+minus exec ~/.i3/switchlayout
+bindsym $mod+minus exec ~/.config/i3/switchlayout -a
+bindsym $mod+Ctrl+minus exec ~/.config/i3/switchlayout
 
 #navigate workspaces next / previous
 bindsym $mod+slash move workspace to output right

@@ -70,8 +70,8 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+equal move scratchpad
 bindsym $mod+equal scratchpad show
 
-bindsym $mod+minus exec ~/.i3/switchlayout -a
-bindsym $mod+Ctrl+minus exec ~/.i3/switchlayout
+bindsym $mod+minus exec ~/.config/i3/switchlayout -a
+bindsym $mod+Ctrl+minus exec ~/.config/i3/switchlayout
 
 #navigate workspaces next / previous
 bindsym $mod+slash move workspace to output right
@@ -319,7 +319,7 @@ mode "$mode_gaps_outer" {
 }
 # i3 config (v4)
 
-bindsym $mod+Shift+m exec ~/.i3/reloadconfig
+bindsym $mod+Shift+m exec ~/.config/i3/reloadconfig
 bindsym $mod+Ctrl+m restart
 bindsym $mod+p bar mode toggle
 

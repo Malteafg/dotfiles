@@ -1,6 +1,6 @@
 # i3 config (v4)
 
-bindsym $mod+Shift+r exec ~/.i3/reloadconfig
+bindsym $mod+Shift+r exec ~/.config/i3/reloadconfig
 bindsym $mod+Ctrl+r restart
 bindsym $mod+h bar mode toggle
 
