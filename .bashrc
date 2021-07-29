@@ -122,6 +122,10 @@ alias sxiv='swallow sxiv'
 alias sshs='eval `ssh-agent` && ssh-add'
 alias sshq='kill $SSH_AGENT_PID'
 
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -v'
+
 alias auconnect='/opt/cisco/anyconnect/bin/vpn -s connect remote.au.dk/AU-ACCESS'
 alias audisconnect='/opt/cisco/anyconnect/bin/vpn -s disconnect remote.au.dk/AU-ACCESS'
 alias ciscostate='/opt/cisco/anyconnect/bin/vpn state'

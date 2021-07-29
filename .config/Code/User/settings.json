@@ -1,9 +1,0 @@
-{
-    "editor.lineNumbers": "relative",
-    "keyboard.dispatch": "keyCode",
-    "vim.useSystemClipboard": true,
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false
-    }
-}

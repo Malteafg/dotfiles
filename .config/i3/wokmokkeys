@@ -40,28 +40,6 @@ bindsym $mod+l fullscreen toggle
 
 ################################################################################################
 # WORKSPACES
-set $ws1 1:a
-set $ws2 2:s
-set $ws3 3:r
-set $ws4 4:t
-set $ws5 5:u
-set $ws6 6:y
-set $ws7 7:f
-set $ws8 8:steam
-set $ws9 9:disc
-set $ws10 10:spo
-
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output DVI-D-0
-workspace $ws6 output DVI-D-0
-workspace $ws7 output DVI-D-0
-workspace $ws8 output DVI-D-0
-workspace $ws9 output DVI-D-0
-workspace $ws10 output DVI-D-0
-
 # switch to workspace
 bindsym $mod+a workspace number $ws1
 bindsym $mod+s workspace number $ws2
@@ -73,6 +51,7 @@ bindsym $mod+f workspace number $ws7
 bindsym $mod+w workspace number $ws8
 bindsym $mod+d workspace number $ws9
 bindsym $mod+j workspace number $ws10
+bindsym $mod+v workspace number $ws11
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+a move container to workspace number $ws1
@@ -85,6 +64,7 @@ bindsym $mod+Ctrl+f move container to workspace number $ws7
 bindsym $mod+Ctrl+w move container to workspace number $ws8
 bindsym $mod+Ctrl+d move container to workspace number $ws9
 bindsym $mod+Ctrl+j move container to workspace number $ws10
+bindsym $mod+Ctrl+v move container to workspace number $ws11
 
 # Move to workspace with focused container
 bindsym $mod+Shift+a move container to workspace number $ws1; workspace number $ws1
@@ -97,6 +77,7 @@ bindsym $mod+Shift+f move container to workspace number $ws7; workspace number $
 bindsym $mod+Shift+w move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+Shift+d move container to workspace number $ws9; workspace number $ws9
 bindsym $mod+Shift+j move container to workspace number $ws10; workspace number $ws10
+bindsym $mod+Shift+v move container to workspace number $ws11; workspace number $ws11
 
 ################################################################################################
 # RESIZE
