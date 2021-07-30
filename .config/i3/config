@@ -31,10 +31,7 @@ bindsym $mod+semicolon exec "alacritty --class smallterm,smallterm"
 for_window [class="smallterm"] floating enable sticky enable resize set 800 200
 for_window [class="smallterm"] move position center
 
-#bindsym $mod+o exec "alacritty --class floatfind,findterm -e fd -t f -H -I | fzf -m | xargs -ro -d \\"\n\\" xdg-open 2>&-"
-bindsym $mod+o exec "alacritty --class floatfind,findterm -e ~/openfile.sh"
-for_window [class="findterm"] floating enable sticky enable resize set 200 500
-for_window [class="findterm"] move position center
+bindsym $mod+o exec "alacritty -e openfile"
 
 bindsym $mod+apostrophe exec "alacritty --class floatranger,floatterm -e ranger"
 bindsym $mod+Shift+apostrophe exec "alacritty --class floattop,floatterm -e htop"

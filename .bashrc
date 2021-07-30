@@ -110,13 +110,6 @@ alias ..='cd ..'
 alias ~='cd ~'
 alias rb='source ~/.bashrc'
 
-alias vimrc='vim ~/.vimrc'
-alias bashrc='vim ~/.bashrc'
-alias comptonconf='vim ~/.config/compton/compton.conf'
-alias alacrittyconf='vim ~/.config/alacritty/alacritty.yml'
-alias codeconf='vim ~/.config/Code/User/settings.json'
-alias gesturesconf='vim ~/.config/libinput-gestures.conf'
-
 alias sxiv='swallow sxiv'
 
 alias sshs='eval `ssh-agent` && ssh-add'
@@ -140,12 +133,8 @@ alaopa() {
 alias mon2cam="~/.deno/bin/deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
-bind '"\C-t":"open_with_fzf\n"'
+bind '"\C-t":"openfile\n"'
 bind '"\C-f":"cd_with_fzf\n"'
-
-open_with_fzf() {
-    fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
-}
 
 cd_with_fzf() {
     cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && tree -L 1
