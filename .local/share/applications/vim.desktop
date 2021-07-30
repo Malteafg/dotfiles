@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Vim
 Exec=alacritty -e vim %F
+Terminal=false
 Type=Application
 Keywords=Text;editor;
 Icon=gvim

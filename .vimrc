@@ -32,30 +32,61 @@ let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/'}]
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
+nnoremap Y y$
 
+"COLORS
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='soft'
 set bg=dark
 colorscheme gruvbox
-
 hi Normal ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 
+"PARENTHESIS COMPLETION
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 
+"OPEN LINES
 nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
+"KEEP CENTER WHEN SEARCHING
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+"SYSTEM CLIPBOARD
 nnoremap <leader>y <S-v>"+y
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "_dP
 
+"SELECT ALL
 nnoremap <leader>a gg<S-v>G
 
+"MOVE TEXT
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+
+"UNDO POINTS
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+
+"SWAP BRACES
+noremap ( {
+noremap ) }
+noremap { (
+noremap } )
+
+"DISABLE ARROW KEYS
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
@@ -67,68 +98,3 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 noremap h <Nop>
 noremap l <Nop>
-
-"noremap <Up> :m '>+1<CR>gv=gv
-"noremap <Down> :m '<-2<CR>gv=gv
-"noremap <Left> <<
-"noremap <Right> >>
-
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-noremap ( {
-noremap ) }
-noremap { (
-noremap } )
-
-"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-"set langnoremap
-"set langmap=qq,dw,re,wr,mt,jy,fu,ui,po,\\;p,aa,ss,hd,tf,gg,yh,nj,ek,ol,i\\;,zz,xx,cc,vv,bb,kn,lm,QQ,DW,RE,WR,MT,JY,FU,UI,PO,:P,AA,SS,HD,TF,GG,YH,NJ,EK,OL,I:,ZZ,XX,CC,VV,BB,KN,LM
-
-"noremap d g
-"noremap e k
-"noremap f e
-"noremap g t
-"noremap i l
-"noremap j y
-"noremap k n
-"noremap l u
-"noremap n j
-"noremap o p
-"noremap p r
-"noremap r s
-"noremap s d
-"noremap t f
-"noremap u i
-"noremap y o
-"noremap D G
-"noremap E K
-"noremap F E
-"noremap G T
-"noremap I L
-"noremap J Y
-"noremap K N
-"noremap L U
-"noremap N J
-"noremap O P
-"noremap P R
-"noremap R S
-"noremap S D
-"noremap T F
-"noremap U I
-"noremap Y O
-
-"nnoremap j h
-"nnoremap k j
-"nnoremap l k
-"nnoremap ; l
-"nnoremap h ;
-"vnoremap j h
-"vnoremap k j
-"vnoremap l k
-"vnoremap ; l
-"vnoremap h ;
-
-"vim-plug
-
