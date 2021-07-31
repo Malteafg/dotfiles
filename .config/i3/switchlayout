@@ -11,8 +11,8 @@ while getopts ":a" opt; do
             echo "Invalid option: -$OPTARG" >&2
             exit
             ;;
-        esac
-    done
+    esac
+done
 
 killall -q xcape
 

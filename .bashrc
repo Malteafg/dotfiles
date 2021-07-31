@@ -107,10 +107,10 @@ alias la='ls -A'
 alias l='ls -CF'
 alias gfkl='vim ~/gfkl/linux/gfkl'
 alias ..='cd ..'
-alias ~='cd ~'
 alias rb='source ~/.bashrc'
 
 alias sxiv='swallow sxiv'
+alias vlc='swallow vlc'
 
 alias sshs='eval `ssh-agent` && ssh-add'
 alias sshq='kill $SSH_AGENT_PID'
@@ -133,15 +133,13 @@ alaopa() {
 alias mon2cam="~/.deno/bin/deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
-bind '"\C-t":"openfile\n"'
-bind '"\C-f":"cd_with_fzf\n"'
+bind '"\C-f":"of -h -E\n"'
+alias godir='source godir'
+bind '"\C-t":"source godir -h -E\n"'
 
-cd_with_fzf() {
-    cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && tree -L 1
-}
-
-pacs() {
-    sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
+pac() {
+    PACS=$(pacman -Ssq | fzf -m --preview="pacman -Si {}")
+    (($?)) || sudo pacman -Syy $PACS
 }
 
 cdn() {

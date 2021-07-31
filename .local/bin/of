@@ -1,0 +1,48 @@
+#!/bin/bash
+
+HOME_DIR=""
+HOME_PATH=""
+EXCLUDED_DIRS=""
+
+while getopts ":hE" opt; do
+    case $opt in
+        h) 
+            HOME_DIR="--base-directory $HOME"
+            HOME_PATH="$HOME/"
+            ;;
+        E)
+            EXCLUDED_DIRS="-E .cache/ -E .cargo/ -E .wine/drive_c/ -E .config/google-chrome/ -E .config/discord/"
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit
+            ;;
+    esac
+done
+
+fd $HOME_DIR -t f -H -I $EXCLUDED_DIRS | fzf -m --preview="head -30 $HOME_PATH{}" | while read line ; do
+    fileext=$(echo $line | cut -d. -f2)
+    echo $fileext
+    case $fileext in
+        link)
+            echo $(cat $HOME_PATH$line) | xargs -ro -d "\n" $BROWSER
+            ;;
+        *)
+            filetype=$(file --mime-type $HOME_PATH$line | cut -d\  -f2)
+            case $filetype in
+                text*)
+                    echo $HOME_PATH$line | xargs -ro -d "\n" vim
+                    ;;
+                image*)
+                    echo $HOME_PATH$line | xargs -ro -d "\n" swallow sxiv
+                    ;;
+                audio*|video*)
+                    echo $HOME_PATH$line | xargs -ro -d "\n" swallow vlc
+                    ;;
+                *)
+                    echo $HOME_PATH$line | xargs -ro -d "\n" xdg-open 2>&-
+                    ;;
+            esac
+            ;;
+    esac
+done
