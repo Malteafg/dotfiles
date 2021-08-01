@@ -40,6 +40,8 @@ exec_always --no-startup-id xrandr --output HDMI-0 --primary
 # LAUNCH PROGRAMS
 bindsym $mod+Return exec alacritty
 
+bindsym $mod+minus exec --no-startup-id ~/.config/i3/switchlayout
+
 bindsym $mod+g exec google-chrome-stable
 
 bindsym $mod+apostrophe exec "alacritty --class floatranger,floatterm -e ranger"
