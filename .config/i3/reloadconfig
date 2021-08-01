@@ -4,4 +4,34 @@
     cat ~/.config/i3/{baseconfig,qwertykeys} > ~/.config/i3/config ||
     cat ~/.config/i3/{baseconfig,wokmokkeys} > ~/.config/i3/config
 
+nummon=$(cat ~/.config/i3/monitorconf | wc -l)
+mon1=$(sed '1q;d' ~/.config/i3/monitorconf)
+mon2=$(sed '1q;d' ~/.config/i3/monitorconf)
+mon3=$(sed '1q;d' ~/.config/i3/monitorconf)
+
+if [[ $nummon -ge 2 ]]; then
+    mon2=$(sed '2q;d' ~/.config/i3/monitorconf)
+    mon3=$(sed '2q;d' ~/.config/i3/monitorconf)
+fi
+if [[ $nummon -ge 3 ]]; then
+    mon3=$(sed '3q;d' ~/.config/i3/monitorconf)
+fi
+
+echo "
+# Move workspaces to specific monitors
+workspace \$ws1 output $mon1
+workspace \$ws2 output $mon1
+workspace \$ws3 output $mon1
+workspace \$ws4 output $mon1
+workspace \$ws5 output $mon2
+workspace \$ws6 output $mon2
+workspace \$ws7 output $mon2
+workspace \$ws8 output $mon3
+workspace \$ws9 output $mon3
+workspace \$ws10 output $mon3
+workspace \$ws11 output $mon1
+
+exec --no-startup-id xrandr --output $mon1 --primary
+" >> ~/.config/i3/config
+
 i3-msg reload

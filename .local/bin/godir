@@ -4,6 +4,8 @@ HOME_DIR=""
 HOME_PATH=""
 EXCLUDED_DIRS=""
 
+OPTIND=1
+
 while getopts ":hE" opt; do
     case $opt in
         h) 

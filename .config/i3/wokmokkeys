@@ -1,27 +1,31 @@
-# i3 config (v4)
-
-bindsym $mod+Shift+m exec ~/.config/i3/reloadconfig
-bindsym $mod+Ctrl+m restart
-bindsym $mod+p bar mode toggle
-
-bindsym $mod+Ctrl+l mode "$mode_gaps"
-bindsym $mod+q mode "$mode_system"
-bindsym $mod+Shift+l mode "resize"
-
-bindsym $mod+c kill
+# i3 config (wokmok keys)
 
 ################################################################################################
-# PROGRAMS
-bindsym $mod+Ctrl+k exec terminal -e 'bmenu'
-bindsym $mod+Return exec alacritty
-bindsym $mod+Ctrl+p exec pavucontrol
+# AUTOSTART
+exec --no-startup-id setxkbmap -layout gfkl -variant wokmok_lshift -model pc105 -option altwin:swap_lalt_lwin
+exec xcape -e '#66=Escape;#23=Tab' -t 200
+
+################################################################################################
+# KEY BINDS
+bindsym $mod+q mode "$mode_system"
+
+bindsym $mod+c kill
+bindsym $mod+Ctrl+c --release exec --no-startup-id xkill
+
+bindsym $mod+l fullscreen toggle
+bindsym $mod+Shift+l mode "resize"
+bindsym $mod+Ctrl+l mode "$mode_gaps"
+
 bindsym $mod+m exec --no-startup-id dmenu_recency
-bindsym $mod+g exec google-chrome-stable
+bindsym $mod+Shift+m exec ~/.config/i3/reloadconfig
+bindsym $mod+Ctrl+m restart
+
+bindsym $mod+Ctrl+k exec terminal -e 'bmenu'
+
+bindsym $mod+p bar mode toggle
+bindsym $mod+Ctrl+p exec pavucontrol
 
 bindsym $mod+o exec "alacritty -e of -h -E"
-
-bindsym $mod+Ctrl+c --release exec --no-startup-id xkill
-# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 ################################################################################################
 # NAVIGATION
@@ -36,9 +40,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+n move down
 bindsym $mod+Shift+e move up
 bindsym $mod+Shift+i move right
-
-# toggle fullscreen mode for the focused container
-bindsym $mod+l fullscreen toggle
 
 ################################################################################################
 # WORKSPACES
@@ -80,25 +81,3 @@ bindsym $mod+Shift+w move container to workspace number $ws8; workspace number $
 bindsym $mod+Shift+d move container to workspace number $ws9; workspace number $ws9
 bindsym $mod+Shift+j move container to workspace number $ws10; workspace number $ws10
 bindsym $mod+Shift+v move container to workspace number $ws11; workspace number $ws11
-
-################################################################################################
-# RESIZE
-# Resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym n resize grow height 5 px or 5 ppt
-        bindsym e resize shrink height 5 px or 5 ppt
-        bindsym i resize grow width 5 px or 5 ppt
-
-        # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-exec --no-startup-id setxkbmap -layout gfkl -variant wokmok_lshift -model pc105 -option altwin:swap_lalt_lwin
-exec xcape -e '#66=Escape;#23=Tab' -t 200

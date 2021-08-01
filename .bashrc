@@ -111,6 +111,7 @@ alias rb='source ~/.bashrc'
 
 alias sxiv='swallow sxiv'
 alias vlc='swallow vlc'
+alias arandr='swallow arandr'
 
 alias sshs='eval `ssh-agent` && ssh-add'
 alias sshq='kill $SSH_AGENT_PID'

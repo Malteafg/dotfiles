@@ -8,73 +8,66 @@ hide_edge_borders none
 font xft:URWGothic-Book 11
 floating_modifier $mod
 focus_follows_mouse no
+workspace_auto_back_and_forth no
+for_window [urgent=latest] focus
+
+gaps inner 3
+gaps outer 0
+smart_gaps on
+smart_borders on
 
 font pango:mono 0
 
 ################################################################################################
-# SOUND 
-
+# AUTOSTART
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pa-applet
-
-bindsym XF86AudioPlay exec --no-startup-id spotifydplaypause
-bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotifyd previous
-bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotifyd next
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# exec_always --no-startup-id sbxkb
+# exec --no-startup-id start_conky_green
+exec --no-startup-id xautolock -time 25 -locker blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec redshift -l 57.01:9.58
+exec_always --no-startup-id xrandr --output HDMI-0 --primary
 
 ################################################################################################
-# PROGRAMS
-bindsym $mod+semicolon exec "alacritty --class smallterm,smallterm" 
-for_window [class="smallterm"] floating enable sticky enable resize set 800 200
-for_window [class="smallterm"] move position center
+# LAUNCH PROGRAMS
+bindsym $mod+Return exec alacritty
+
+bindsym $mod+g exec google-chrome-stable
 
 bindsym $mod+apostrophe exec "alacritty --class floatranger,floatterm -e ranger"
 bindsym $mod+Shift+apostrophe exec "alacritty --class floattop,floatterm -e htop"
 bindsym $mod+Ctrl+apostrophe exec "pcmanfm --class floatpcman,floatterm"
-for_window [class="floatterm"] floating enable sticky enable resize set 1400 900
-for_window [class="floatterm"] move position center
 
-################################################################################################
-# PRINT SCREEN
+# screenshots
 bindsym $mod+parenright exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+parenright --release exec --no-startup-id i3-scrot -sc
 bindsym $mod+Ctrl+parenright --release exec --no-startup-id i3-scrot -s
 
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
 ################################################################################################
-# workspace back and forth (with/without active container)
-workspace_auto_back_and_forth no
-# bindsym $mod+Tab workspace back_and_forth
-# bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
-
+# i3 CONTROLS
 # split orientation
 bindsym $mod+comma split v
 bindsym $mod+period split h
 
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
+# move workspace to monitor
+bindsym $mod+Shift+comma move workspace to output left
+bindsym $mod+Shift+period move workspace to output right
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+equal move scratchpad
 bindsym $mod+equal scratchpad show
-
-bindsym $mod+minus exec ~/.config/i3/switchlayout -a
-bindsym $mod+Ctrl+minus exec ~/.config/i3/switchlayout
-
-#navigate workspaces next / previous
-bindsym $mod+slash move workspace to output right
+bindsym $mod+Shift+equal move scratchpad
 
 ################################################################################################
 # WORKSPACES
@@ -89,18 +82,6 @@ set $ws8 8:steam
 set $ws9 9:disc
 set $ws10 10:spo
 set $ws11 11:game
-
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output DVI-D-0
-workspace $ws6 output DVI-D-0
-workspace $ws7 output DVI-D-0
-workspace $ws8 output DVI-D-0
-workspace $ws9 output DVI-D-0
-workspace $ws10 output DVI-D-0
-workspace $ws11 output HDMI-0
 
 # Open applications on specific workspaces
 for_window [class="Steam"] move to workspace $ws8
@@ -140,13 +121,13 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+for_window [class="smallterm"] floating enable sticky enable resize set 800 200
+for_window [class="smallterm"] move position center
+for_window [class="floatterm"] floating enable sticky enable resize set 1400 900
+for_window [class="floatterm"] move position center
 
 # Steam
 for_window [class="^Steam$" title="^Friends$"] floating enable
@@ -160,8 +141,10 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
+
 ################################################################################################
-# CLOSE PROMPT
+# MODES
+# close prompt
 set $close "Close the window [Y/n]"
 mode $close {
 	bindsym y kill, mode "default"
@@ -169,9 +152,7 @@ mode $close {
 	bindsym Escape mode "default"
 }
 
-################################################################################################
-# SHUTDOWN
-# Set shut down, restart and locking features
+# shutdown
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
@@ -187,21 +168,89 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+# gaps
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# resize
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym comma resize shrink width 5 px or 5 ppt
+        bindsym plus resize grow height 5 px or 5 ppt
+        bindsym minus resize shrink height 5 px or 5 ppt
+        bindsym period resize grow width 5 px or 5 ppt
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 ################################################################################################
-# AUTOSTART
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-# exec_always --no-startup-id sbxkb
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 25 -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec redshift -l 57.01:9.58
-exec_always --no-startup-id xrandr --output HDMI-0 --primary
+# BAR
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+bar {
+	i3bar_command i3bar
+	status_command i3status
+	position top
+    
+    tray_output primary
+
+	bindsym button4 nop
+	bindsym button5 nop
+    font xft:URWGothic-Book 11
+	strip_workspace_numbers yes
+
+    colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text
+        focused_workspace  #F9FAF9 #16a085 #292F34
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
 
 ################################################################################################
 # COLORS
@@ -246,74 +295,3 @@ set_from_resource $term_color15    color15
 
   client.background       #2B2C2B
 
-################################################################################################
-# BAR
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
-	status_command i3status
-	position top
-    
-    tray_output primary
-
-	bindsym button4 nop
-	bindsym button5 nop
-    font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
-
-################################################################################################
-# GAPS
-gaps inner 3
-gaps outer 0
-smart_gaps on
-smart_borders on
-
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}

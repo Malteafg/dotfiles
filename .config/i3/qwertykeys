@@ -1,42 +1,44 @@
-# i3 config (v4)
-
-bindsym $mod+Shift+r exec ~/.config/i3/reloadconfig
-bindsym $mod+Ctrl+r restart
-bindsym $mod+h bar mode toggle
-
-bindsym $mod+Ctrl+e mode "$mode_gaps"
-bindsym $mod+q mode "$mode_system"
-bindsym $mod+Shift+e mode "resize"
-
-bindsym $mod+w kill
+# i3 config (qwerty keys)
 
 ################################################################################################
-# PROGRAMS
-bindsym $mod+Ctrl+t exec terminal -e 'bmenu'
-bindsym $mod+Return exec alacritty
-bindsym $mod+Ctrl+h exec pavucontrol
-bindsym $mod+r exec --no-startup-id dmenu_recency
-bindsym $mod+g exec google-chrome-stable
+# AUTOSTART
+exec --no-startup-id setxkbmap -layout gfkl -variant qwerty -model pc105 -option altwin:swap_lalt_lwin
 
+################################################################################################
+# KEY BINDS
+bindsym $mod+q mode "$mode_system"
+
+bindsym $mod+w kill
 bindsym $mod+Ctrl+w --release exec --no-startup-id xkill
-# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+
+bindsym $mod+e fullscreen toggle
+bindsym $mod+Shift+e mode "resize"
+bindsym $mod+Ctrl+e mode "$mode_gaps"
+
+bindsym $mod+r exec --no-startup-id dmenu_recency
+bindsym $mod+Shift+r exec ~/.config/i3/reloadconfig
+bindsym $mod+Ctrl+r restart
+
+bindsym $mod+Ctrl+t exec terminal -e 'bmenu'
+
+bindsym $mod+h bar mode toggle
+bindsym $mod+Ctrl+h exec pavucontrol
+
+bindsym $mod+semicolon exec "alacritty -e of -h -E"
 
 ################################################################################################
 # NAVIGATION
 # change focus
-bindsym $mod+m focus left
+bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+m move left
+bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# toggle fullscreen mode for the focused container
-bindsym $mod+e fullscreen toggle
 
 ################################################################################################
 # WORKSPACES
@@ -78,25 +80,3 @@ bindsym $mod+Shift+x move container to workspace number $ws8; workspace number $
 bindsym $mod+Shift+c move container to workspace number $ws9; workspace number $ws9
 bindsym $mod+Shift+v move container to workspace number $ws10; workspace number $ws10
 bindsym $mod+Shift+z move container to workspace number $ws11; workspace number $ws11
-
-################################################################################################
-# RESIZE
-# Resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym m resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
-
-        # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-
-exec --no-startup-id setxkbmap -layout gfkl -variant qwerty -model pc105 -option altwin:swap_lalt_lwin
